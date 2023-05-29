@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>網頁設計期末</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <meta property="og:description" content="made by 110403022 黃道永"/>
+
+</head>
+
+<body>
+   <div>
+    <h2>樂透遊戲</h2><br>
+    <h3>使用者可在網頁上自行輸入 3 個號碼 (範圍是數字 1~10)；每次開始遊戲時會亂數產生 3 個得獎號碼 (範圍是數字 1~10 不重複)；當使用者輸入 3 個號碼並按下開獎按鈕後，會開始比對輸入的號碼及得獎號碼 (不管排列先後順序)，全部對中時為頭獎、2 個號碼對中為貳獎、1 個號碼對中為參獎</h3><br>
+    <input type="int" id="num1">
+    <input type="int" id="num2">
+    <input type="int" id="num3">
+    <button type="button" id="button">確認</button>
+    <button type="button" id="reset">重設</button><br>
+    <p id="result"></p>
+    <script >
+
+document.getElementById("button").onclick = function(){
+
+    let a = Math.floor(Math.random() * 10) + 1;
+    let b;
+    let c;
+    do{b = Math.floor(Math.random() * 10) + 1;}while(a==b)
+    do{c = Math.floor(Math.random() * 10) + 1;}while(a==c||b==c)
+    var score = 0;
+    
+    let num1 = document.getElementById("num1").value;
+    let num2 = document.getElementById("num2").value;
+    let num3 = document.getElementById("num3").value;
+    try{
+        if(isNaN(num1)||isNaN(num2)||isNaN(num3))throw"請輸入數字";
+        if(num1 == ""||num2 == ""||num3 == "")throw"請輸入";
+        if(num1 >10||num2 >10||num3 >10)throw"數字過大";
+        if(num1 <1||num2 <1||num3 <1)throw"數字過小";
+    }
+    catch(error){
+  alert(error);
+  return 0;
+}
+
+    
+    if( a==num1||a==num2||a==num3 )
+    score +=1;
+    if( b==num1||b==num2||b==num3 )
+    score +=1;
+    if( c==num1||c==num2||c==num3 )
+    score +=1;
+
+    switch(score){
+        case 0:
+            text ="未中獎"
+        break;
+        case 1:
+            text = "三獎100元"
+        break;
+        case 2:
+            text = "二獎500元"
+        break;
+        case 3:
+            text = "頭獎1000元"
+        break;
+
+    }
+    document.getElementById("result").innerHTML = "數字是"+a+b+c+text;
+
+
+}    
+document.getElementById("reset").onclick = function(){
+        c =null;
+        b =null;
+        a =null;
+        document.getElementById("result").innerHTML = "";
+    }
+    </script>
+   </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+body{
+    background-color: #96a5c3;
+}
+#result{
+    font-style: bold;
+    font-size: 18px;
+    color: #3A3B3C;
+}
+h2{
+    color: #3A3B3C;
+}
+h3{
+    color: #3A3B3C;
+}
+#button{
+    font-style: bold;
+    color: #3090C7;
+}
+#reset{
+    font-style: bold;
+    color: #9b2323;
+}
